@@ -15,6 +15,9 @@
   --global-html-color: var(--global-color-front);
   --global-html-backgroundColor: var(--global-color-back);
   --global-selection-backgroundColor: var(--global-color-front);
+
+  /*Robot*/
+  --global-robot-height: 300px;
 }
 
 /*------------------------------------*\
@@ -34,6 +37,8 @@ html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--global-color-back);
+  color: var(--global-color-front);
 }
 
 *,
@@ -43,6 +48,7 @@ html {
 }
 
 body {
+  height: 100vh;
 }
 
 /*
@@ -133,9 +139,23 @@ body {
 */
 
 .c-robot {
+  max-height: var(--global-robot-height);
+  display: block;
+  --c-robot-animation-duration: 0.75s;
+  --c-robot-animation-timing-function: ease-in-out;
+  --c-robot-animation-iteration-count: infinite;
+  --c-robot-animation-direction: alternate;
+  fill: var(--global-color-front);
+  position: relative;
+  --local-half-robot-height: calc(var(--global-robot-height) / 2);
+  top: calc(50vh - var(--local-half-robot-height));
+  margin: auto;
 }
 
+
 .c-robot__shadow {
+  fill: #000;
+  opacity: 0.3;
 }
 
 
@@ -215,5 +235,21 @@ body {
   h2,
   h3 {
     page-break-after: avoid;
+  }
+}
+
+
+@keyframes shadowPulse {
+  100%{
+    transform: scale(0.75);
+  }
+}
+
+@keyframes robotHover {
+  0%{
+    transform: translateY(2.5%);
+  }
+  100%{
+    transform: translateY(-2.5%);
   }
 }
